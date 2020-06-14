@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+coverage
+tmp
+temp
+.vscode
+.cache
+cache
+vendor
+
+*.log
+.env*
+
+package-lock.json
+
+.DS_Store

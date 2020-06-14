@@ -1,0 +1,60 @@
+{
+  "name": "defaults",
+  "version": "1.0.0",
+  "description": "This repository is created to keep common files that I use between projects to keep consistency in the code that I write. Things like linters, editor configs, code style, and so on.",
+  "scripts": {
+    "fmt": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml,scss}\"",
+    "lint-styles": "stylelint '**/*.scss' --syntax=scss --fix",
+    "lint-scripts": "eslint . --ext js,jsx,ts,tsx --fix --max-warnings=0",
+    "lint": "yarn fmt && yarn lint-styles && yarn lint-scripts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateoolarte/defaults.git"
+  },
+  "keywords": [
+    "prettier",
+    "eslint",
+    "npm",
+    "yarn",
+    "editorconfig",
+    "git",
+    "config"
+  ],
+  "author": "Mateo Olarte <mateo.olarte8@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mateoolarte/defaults/issues"
+  },
+  "homepage": "https://github.com/mateoolarte/defaults#readme",
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "not IE_Mob 11",
+    "maintained node versions",
+    "> 5%",
+    "last 2 version"
+  ],
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.6.0",
+    "stylelint-config-standard": "^20.0.0",
+    "lint-staged": ">=10",
+    "husky": ">=4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml,scss}": "prettier --write",
+    "*.scss": "stylelint --syntax=scss"
+  }
+}
