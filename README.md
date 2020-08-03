@@ -2,7 +2,7 @@
 
 This repository is created to keep common files that I use between projects to keep consistency in the code that I write. Things like linters, editor configs, code style, and so on.
 
-# Features
+## Features
 
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
@@ -11,3 +11,8 @@ This repository is created to keep common files that I use between projects to k
 - [lint-staged](https://github.com/okonet/lint-staged)
 - Gitignore
 - NPM/Yarn scripts
+
+## TODO
+
+- [ ] Create common breakpoints sizes
+- [ ] Configure default test suite cases with Jest
