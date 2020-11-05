@@ -12,7 +12,10 @@ This repository is created to keep common files that I use between projects to k
 - Gitignore
 - NPM/Yarn scripts
 
+## Caveats
+
+This repository was created mainly for React apps and NextJS projects but can used for other kind of Frontend and maybe Nodejs projects
+
 ## TODO
 
-- [ ] Create common breakpoints sizes
-- [ ] Configure default test suite cases with Jest
+- [ ] Create a cli tool to copy all of the files on this repo and move to the current project
