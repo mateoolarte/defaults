@@ -12,7 +12,7 @@ This repository is created to keep common files that I use between projects to k
 - Gitignore
 - NPM/Yarn scripts
 
-## Caveats
+## Caveats
 
 This repository was created mainly for React apps and NextJS projects but can used for other kind of Frontend and maybe Nodejs projects
 
