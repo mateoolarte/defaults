@@ -19,4 +19,6 @@ This repository was created mainly for React apps and NextJS projects but can us
 ## Roadmap
 
 - [x] Create a cli tool to copy all of the files on this repo and move to the current project
-- [ ] Add support for [semantic-release](https://github.com/semantic-release/semantic-release) lib
+- [ ] Add support for [semantic-release](https://github.com/semantic-release/semantic-release)
+- [ ] Add arguments options to know what can of project we'll be using (React, Nodejs, NextJS, etc)
+- [ ] Find a way to copy the scripts commands on the destination `package.json`
