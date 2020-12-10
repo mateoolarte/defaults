@@ -22,3 +22,7 @@ This repository was created mainly for React apps and NextJS projects but can us
 - [ ] Add support for [semantic-release](https://github.com/semantic-release/semantic-release)
 - [ ] Add arguments options to know what can of project we'll be using (React, Nodejs, NextJS, etc)
 - [ ] Find a way to copy the scripts commands on the destination `package.json`
+- [ ] Prompt for git provider and give templates like PULL_REQUEST, CONTRIBUTING, etc
+- [ ] Define a README template to document a project (Description, Motivation, File structure, Features)
+- [ ] Prompt for CI provider and create the config file (travis.yml, circleci.yml)
+- [ ] Create a documentation command to know what can of options can be used --help
