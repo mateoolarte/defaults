@@ -2,6 +2,7 @@
 **/test/**/*.js
 **/.vscode
 **/package-lock.json
+**/yarn.lock
 
 /build/**
 /coverage/

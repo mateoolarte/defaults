@@ -11,3 +11,7 @@ coverage
 
 .cache
 .vscode
+
+files
+
+.eslintrc.js

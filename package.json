@@ -1,25 +1,30 @@
 {
   "name": "setup-files",
-  "version": "1.0.0",
   "description": "This repository is created to keep common files that I use between projects to keep consistency in the code that I write. Things like linters, editor configs, code style, and so on.",
+  "version": "1.0.0",
   "main": "src/index.js",
-  "bin": {
-    "setup-files": "bin/setup-files"
-  },
+  "bin": "bin/setup-files",
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "chalk": "^4.1.0",
-    "esm": "^3.2.25",
-    "listr": "^0.14.3",
-    "ncp": "^2.0.0",
-    "pkg-install": "^1.0.0"
+  "scripts": {
+    "fmt": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml,scss}\"",
+    "lint-styles": "stylelint '**/*.scss' --syntax=scss --fix",
+    "lint-scripts": "eslint . --ext js,jsx,ts,tsx --fix --max-warnings=0",
+    "lint": "yarn fmt && yarn lint-styles && yarn lint-scripts",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch --coverage"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mateoolarte/setup-files.git"
   },
+  "bugs": {
+    "url": "https://github.com/mateoolarte/setup-files/issues"
+  },
+  "homepage": "https://github.com/mateoolarte/setup-files#readme",
+  "author": "Mateo Olarte <mateo.olarte8@gmail.com>",
+  "license": "MIT",
   "keywords": [
     "prettier",
     "eslint",
@@ -30,19 +35,12 @@
     "config",
     "jest"
   ],
-  "author": "Mateo Olarte <mateo.olarte8@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mateoolarte/setup-files/issues"
-  },
-  "homepage": "https://github.com/mateoolarte/setup-files#readme",
-  "scripts": {
-    "fmt": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml,scss}\"",
-    "lint-styles": "stylelint '**/*.scss' --syntax=scss --fix",
-    "lint-scripts": "eslint . --ext js,jsx,ts,tsx --fix --max-warnings=0",
-    "lint": "yarn fmt && yarn lint-styles && yarn lint-scripts",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch --coverage"
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "esm": "^3.2.25",
+    "fs-extra": "^9.0.1",
+    "listr": "^0.14.3",
+    "pkg-install": "^1.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

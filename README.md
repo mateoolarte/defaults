@@ -16,6 +16,7 @@ This repository is created to keep common files that I use between projects to k
 
 This repository was created mainly for React apps and NextJS projects but can used for other kind of Frontend and maybe Nodejs projects
 
-## TODO
+## Roadmap
 
-- [ ] Create a cli tool to copy all of the files on this repo and move to the current project
+- [x] Create a cli tool to copy all of the files on this repo and move to the current project
+- [ ] Add support for [semantic-release](https://github.com/semantic-release/semantic-release) lib

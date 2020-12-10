@@ -1,46 +1,68 @@
-// import chalk from 'chalk';
-import fs from 'fs';
-import ncp from 'ncp';
+import chalk from 'chalk';
+import { copy } from 'fs-extra';
 import path from 'path';
-import { promisify } from 'util';
-// import Listr from 'listr';
-// import { projectInstall } from 'pkg-install';
-import mergeFiles from 'merge-files';
+import Listr from 'listr';
+import { install } from 'pkg-install';
 
-const copy = promisify(ncp);
-const fullPathName = new URL(import.meta.url).pathname;
 const currentDirectory = process.cwd();
+const fullPathName = new URL(import.meta.url).pathname;
 
-// async function copyTemplateFiles() {
-//   const filesDirectory = path.resolve(fullPathName, '../../files');
+async function copyDotfiles() {
+  const SRC_DOTFILES = '../../files/dotfiles';
+  const dotDirectory = path.resolve(fullPathName, SRC_DOTFILES);
 
-//   return copy(filesDirectory, currentDirectory, {
-//     clobber: false,
-//   });
-// }
-
-async function copyPkgFile() {
-  const setupPkgFile = path.resolve(fullPathName, '../../files/package.json');
-  const pkgFile = path.resolve(process.cwd(), './package.json');
-
-  try {
-    if (fs.existsSync(pkgFile)) {
-      return mergeFiles([setupPkgFile, pkgFile], pkgFile);
-    } else {
-      return copy(setupPkgFile, currentDirectory, {
-        clobber: false,
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
+  return copy(dotDirectory, currentDirectory, { overwrite: false });
 }
 
-export async function setupFiles() {
-  // console.log('Copy setup files');
-  // await copyTemplateFiles();
-  await copyPkgFile();
-  // console.log('%s Setup ready', chalk.green.bold('DONE'));
+async function copyConstantFile() {
+  const SRC_CONSTANT_FILE = '../../files/constants.js';
+  const DIST_CONSTANT_FILE = 'src/constants.js';
+
+  const srcDirectory = path.resolve(currentDirectory, DIST_CONSTANT_FILE);
+  const constantFile = path.resolve(fullPathName, SRC_CONSTANT_FILE);
+
+  return copy(constantFile, srcDirectory, { overwrite: false });
+}
+
+async function installDevDependencies() {
+  const dependencies = {
+    'babel-eslint': 'latest',
+    eslint: 'latest',
+    'eslint-config-prettier': 'latest',
+    'eslint-plugin-prettier': 'latest',
+    husky: '>=4.3.5',
+    jest: 'latest',
+    'lint-staged': '>=10.5.3',
+    prettier: 'latest',
+    stylelint: 'latest',
+    'stylelint-config-standard': 'latest',
+  };
+  const config = {
+    dev: true,
+    prefer: 'yarn',
+  };
+
+  return install(dependencies, config);
+}
+
+const tasks = new Listr([
+  {
+    title: 'dotfiles',
+    task: () => copyDotfiles(),
+  },
+  {
+    title: 'constant file',
+    task: () => copyConstantFile(),
+  },
+  {
+    title: 'installing dependencies',
+    task: () => installDevDependencies(),
+  },
+]);
+
+export async function cli() {
+  await tasks.run();
+  console.log('%s Setup ready', chalk.green.bold('DONE'));
 
   return true;
 }
